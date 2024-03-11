@@ -36,7 +36,7 @@ def check_login():
         return redirect(url_for('dashboard'))
 
     else:
-        return "Giriş başarısız! Lütfen kullanıcı adı ve şifrenizi kontrol edin."
+        return render_template('index.html', message="Giriş başarısız! Lütfen kullanıcı adı ve şifrenizi kontrol edin.")
 
 
 @app.route('/dashboard')
