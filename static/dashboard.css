@@ -1,0 +1,57 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Daha modern bir yazı tipi */
+    background-color: #f4f4f4; /* Arka plan rengi */
+}
+
+#sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 200px;
+    background-color: #333;
+    color: #fff;
+    padding-top: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Yumuşak gölge */
+    overflow-y: auto;
+}
+
+#sidebar ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+#sidebar ul li {
+    padding: 10px;
+    transition: background-color 0.3s;
+}
+
+#sidebar ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    transition: color 0.3s; /* Geçiş efekti */
+}
+
+#sidebar ul li:hover {
+    background-color: #555;
+}
+
+#sidebar ul li a:hover {
+    color: #ffc107; /* Değiştirilen link rengi */
+}
+#sidebar ul li.active {
+    background-color: #555;
+}
+
+
+#content {
+    margin-left: 220px; /* Adjust according to sidebar width */
+    padding: 20px;
+    background-color: #fff; /* İçerik alanının arka plan rengi */
+    border-radius: 10px; /* Yuvarlatılmış köşeler */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Yumuşak gölge */
+}

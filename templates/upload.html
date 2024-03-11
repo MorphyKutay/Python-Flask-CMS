@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Upload</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='upload.css') }}">
+</head>
+<body>
+    <div id="sidebar">
+        <ul>
+            <li {% if active_page == 'dashboard' %}class="active"{% endif %}><a href="/dashboard">Dashboard</a></li>
+            <li {% if active_page == 'upload' %}class="active"{% endif %}><a href="/upload">Upload</a></li>
+            <li {% if active_page == 'logout' %}class="active"{% endif %}><a href="/logout">Çıkış</a></li>
+            <!-- Diğer menü öğelerini buraya ekleyin -->
+        </ul>
+    </div><br><br>
+    <div id="content">
+        <form action = "/upload" method = "post" enctype="multipart/form-data">   
+            <input type="file" name="file" />   
+            <input type = "submit" value="Upload">   
+        </form> 
+
+        {% if messages %}
+            {% for message in messages %}
+                <p class="{{ message.category }}">{{ message }}</p>
+            {% endfor %}
+        {% endif %}
+
+
+
+        <h2>Yüklenen Dosyalar</h2>
+        <ul>
+            <div class="image-container">
+            {% for filename in uploaded_files %}
+            <img src="{{ url_for('static', filename='uploads/' + filename) }}" alt="{{ filename }}" width="300" height="300">
+            <form action="/delete/{{ filename }}" method="post" onsubmit="return confirm('Bu dosyayı silmek istediğinizden emin misiniz?')">
+                <input type="submit" class="delete-button" value="Sil">
+            </form>
+            {% endfor %}
+        </div>
+        </ul>
+
+        
+
+    </div>
+</body>
+</html>
