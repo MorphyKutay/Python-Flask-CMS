@@ -43,10 +43,10 @@ body {
 #sidebar ul li a:hover {
     color: #ffc107; /* Değiştirilen link rengi */
 }
+
 #sidebar ul li.active {
     background-color: #555;
 }
-
 
 #content {
     margin-left: 220px; /* Adjust according to sidebar width */
@@ -54,4 +54,63 @@ body {
     background-color: #fff; /* İçerik alanının arka plan rengi */
     border-radius: 10px; /* Yuvarlatılmış köşeler */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Yumuşak gölge */
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+input[type="text"],
+textarea {
+    width: calc(100% - 20px);
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+}
+
+textarea {
+    height: 100px;
+    margin-bottom: 0; /* Boşluğu kaldır */
+}
+
+input[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+.delete-button {
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.delete-button:hover {
+    background-color: #c82333;
+}
+
+.delete-form {
+    display: inline;
+    margin-left: 10px;
 }

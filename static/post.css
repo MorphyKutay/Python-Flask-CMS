@@ -1,0 +1,17 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    padding: 20px;
+}
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+.post-title {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+.post-content {
+    font-size: 18px;
+    line-height: 1.6;
+}

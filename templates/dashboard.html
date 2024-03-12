@@ -16,7 +16,32 @@
     </div>
     <div id="content">
         <h1>Hoş geldiniz, {{ username }}!</h1>
-        <!-- Diğer içerikleri buraya ekleyin -->
+        <form action="/dashboard" method="post">
+            <div class="form-group">
+                <label for="title">Başlık:</label>
+                <input type="text" id="title" name="title">
+            </div>
+            <div class="form-group">
+                <label for="content">İçerik:</label>
+                <textarea  name="content" rows="4" cols="50"></textarea>
+            </div>
+            <input type="submit" value="Gönder">
+
+        </form>
+
+        <h2>Tüm Yazılar</h2>
+        <hr>
+        <ul class="posts">
+            {% for post in posts %}
+                <li class="post">
+                    <h3>{{ post.title }}</h3>
+                    <p>{{ post.content }}</p>
+                    <form action="/delete/{{ post.id }}" method="post" class="delete-form">
+                        <input type="submit" value="Sil" onclick="return confirm('Bu yazıyı silmek istediğinizden emin misiniz?')" class="delete-button">
+                    </form>
+                </li>
+            {% endfor %}
+        </ul>
     </div>
 </body>
 </html>

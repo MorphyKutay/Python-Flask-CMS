@@ -1,0 +1,42 @@
+/* styles.css */
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Daha modern bir yazı tipi */
+    background-color: #f4f4f4; /* Arka plan rengi */
+}
+
+header {
+    background-color: #007bff; /* Başlık arka plan rengi */
+    color: #fff; /* Başlık metin rengi */
+    padding: 20px;
+    text-align: center;
+}
+
+main {
+    padding: 20px;
+}
+
+.posts {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.post {
+    background-color: #fff; /* Gönderi arka plan rengi */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Gönderi kutusuna yumuşak gölge */
+}
+
+.post h2 {
+    color: #333; /* Gönderi başlık rengi */
+    margin-bottom: 10px;
+}
+
+.post p {
+    color: #666; /* Gönderi içerik rengi */
+    margin-top: 0; /* Paragrafın üst boşluğunu sıfırla */
+}

@@ -19,9 +19,21 @@ class Veri(db.Model):
     uname = db.Column(db.String(64), nullable=False)#kendi tablonuza göre editleyin
     passw = db.Column(db.Integer, nullable=False) #kendi tablonuza göre editleyin
 
+class Posts(db.Model):
+    id = db.Column(db.Integer, primary_key=True,autoincrement=True)
+    title = db.Column(db.String(100), nullable=False)
+    content = db.Column(db.Text, nullable=False)
+
+
 @app.route('/')
+def index():
+   posts = Posts.query.all() 
+   return render_template('index.html',posts=posts)
+
+
+@app.route('/login')
 def login():
-   return render_template('index.html')
+   return render_template('login.html')
 
 @app.route('/check_login', methods=['POST'])
 def check_login():
@@ -36,17 +48,31 @@ def check_login():
         return redirect(url_for('dashboard'))
 
     else:
-        return render_template('index.html', message="Giriş başarısız! Lütfen kullanıcı adı ve şifrenizi kontrol edin.")
+        return render_template('login.html', message="Giriş başarısız! Lütfen kullanıcı adı ve şifrenizi kontrol edin.")
 
 
-@app.route('/dashboard')
+@app.route('/dashboard',methods=['GET', 'POST'])
 def dashboard():
     username = session.get('username')
     if not username:
         return redirect(url_for('login'))
-    
-    return render_template('dashboard.html', username=username,active_page='dashboard')
+    if request.method == 'POST':
+        title = request.form['title']
+        content = request.form['content']
+        if title == "" or content =="":
+            return redirect(url_for('dashboard'))
+        new_post = Posts(title=title, content=content)
+        db.session.add(new_post)
+        db.session.commit()
+        return redirect(url_for('dashboard'))
 
+    posts = Posts.query.all()    
+    return render_template('dashboard.html', username=username,active_page='dashboard',posts=posts)
+
+@app.route('/post/<int:post_id>')
+def post(post_id):
+    post = Posts.query.get_or_404(post_id)
+    return render_template('post.html', post=post)
 
 @app.route('/logout')
 def logout():
@@ -111,6 +137,15 @@ def delete_file(filename):
     return redirect(url_for('upload'))
 
 
+@app.route('/delete/<int:id>', methods=['POST'])
+def delete(id):
+    username = session.get('username')
+    if not username:
+        return redirect(url_for('login'))
+    post = Posts.query.get_or_404(id)
+    db.session.delete(post)
+    db.session.commit()
+    return redirect(url_for('dashboard'))
 
 
 if __name__ == '__main__':
