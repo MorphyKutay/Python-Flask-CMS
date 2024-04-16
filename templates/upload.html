@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Upload</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='upload.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" />
 </head>
 <body>
     <div id="sidebar">
@@ -32,16 +33,18 @@
         <ul>
             <div class="image-container">
             {% for filename in uploaded_files %}
-            <img src="{{ url_for('static', filename='uploads/' + filename) }}" alt="{{ filename }}" width="300" height="300">
+            <a href="{{ url_for('static', filename='uploads/' + filename) }}" data-fancybox="gallery" width="200" height="200" data-caption="{{ filename }}">
+                <img src="{{ url_for('static', filename='uploads/' + filename) }}" alt="{{ filename }}" width=200 height=200>
+            </a>
             <form action="/delete/{{ filename }}" method="post" onsubmit="return confirm('Bu dosyayı silmek istediğinizden emin misiniz?')">
                 <input type="submit" class="delete-button" value="Sil">
             </form>
             {% endfor %}
         </div>
         </ul>
-
-        
-
     </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
 </body>
 </html>

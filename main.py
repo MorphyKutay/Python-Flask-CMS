@@ -56,6 +56,7 @@ def dashboard():
     username = session.get('username')
     if not username:
         return redirect(url_for('login'))
+    
     if request.method == 'POST':
         title = request.form['title']
         content = request.form['content']
@@ -147,6 +148,14 @@ def delete(id):
     db.session.commit()
     return redirect(url_for('dashboard'))
 
+
+@app.route('/hakkimizda')
+def hakkimizda():
+     return redirect(url_for('index'))
+
+@app.route('/iletisim')
+def iletisim():
+    return redirect(url_for('index'))
 
 if __name__ == '__main__':
     app.run(debug=True)

@@ -8,10 +8,24 @@ body {
 }
 
 header {
-    background-color: #007bff; /* Başlık arka plan rengi */
+    background-color: #0056b3; /* Başlık arka plan rengi - Maviyi biraz koyulttum */
     color: #fff; /* Başlık metin rengi */
     padding: 20px;
     text-align: center;
+}
+
+nav {
+    padding-top: 10px; /* Nav menüsüne biraz boşluk ekledim */
+}
+
+nav a {
+    color: #fff; /* Navbar linklerinin metin rengi */
+    text-decoration: none; /* Link altı çizgisini kaldır */
+    margin-right: 20px; /* Linkler arasına sağ boşluk ekledim */
+}
+
+nav a:hover {
+    color: #f8f9fa; /* Link hover rengi - Beyaz rengi daha açık bir renkle değiştirdim */
 }
 
 main {

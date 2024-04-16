@@ -5,10 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Anasayfa</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
+
 </head>
 <body>
     <header>
-        <h1>Anasayfa</h1>
+        {% include 'header.html' %}
     </header>
     <main>
         <section class="posts">

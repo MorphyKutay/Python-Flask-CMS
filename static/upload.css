@@ -98,14 +98,16 @@ input[type="submit"]:hover {
     gap: 20px; /* Resimler arasında 20 piksel boşluk */
 }
 
+
 .image-container img {
     max-width: 100%;
-    height: auto;
-    cursor: pointer; /* Farenin üstüne geldiğinde imleci işaretçiye dönüştür */
+    height: 200px; /* İstenilen boyuta ayarlayabilirsiniz */
+    object-fit: cover; /* Resmin boyutunu koruyarak kaplamasını sağlar */
+    cursor: pointer;
 }
-.image-container .delete-button {
-    background-color: #ff6347; /* Kırmızı renk */
-    color: #fff; /* Beyaz renk */
+.delete-button {
+    background-color: #dc3545;
+    color: #fff;
     border: none;
     border-radius: 5px;
     padding: 5px 10px;
@@ -113,6 +115,17 @@ input[type="submit"]:hover {
     cursor: pointer;
     transition: background-color 0.3s;
 }
-.image-container .delete-button:hover {
-    background-color: #cc4b3d; /* Koyu kırmızı renk */
+
+.delete-button:hover {
+    background-color: #c82333;
+}
+
+/* İlgili linkin üstüne silme düğmesini hareket ettir */
+.image-container a:hover .delete-button {
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 999;
 }
